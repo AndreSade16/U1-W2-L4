@@ -185,6 +185,17 @@ const antiSpamFilter = function (emailContent) {
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
+const someday = new Date(2026, 2, 11);
+
+const getDays = function (date) {
+  const oneDay = 1000 * 60 * 60 * 24;
+  const nowMs = new Date().getTime();
+  const msPast = nowMs - date.getTime();
+  return msPast / oneDay;
+};
+
+console.log(getDays(someday));
+
 /* EXTRA 11
  Scrivi una funzione chiamata "matrixGenerator" che riceve come parametri due numeri interi, "x" e "y".
  Il risultato deve essere una matrice di "x" volte "y", e i valori devono rispecchiare gli indici della posizione all'interno della matrice.
