@@ -155,19 +155,14 @@ const average = function (arr) {
 /* SCRIVI QUI LA TUA RISPOSTA */
 
 const longest = function (arr) {
-  let tempLongest = "";
+  let tempLongest = arr[0];
   for (i = 1; i < arr.length; i++) {
-    tempLongest = arr[0];
     if (arr[i].length >= arr[i - 1].length) {
       tempLongest = arr[i];
-    } 
-
+    }
+  }
   return tempLongest;
 };
-
-console.log(
-  longest(["ciao", "comecazzo", "supercalifragilistichespiralidoso", "stai"]),
-);
 
 /* EXTRA 9
  Crea una funzione per creare un filtro anti-spam per la tua casella email. La funzione riceve un parametro stringa chiamato "emailContent", e torna un valore booleano.
@@ -175,6 +170,14 @@ console.log(
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+
+const antiSpamFilter = function (emailContent) {
+  if (emailContent.includes("SPAM") || emailContent.includes("SCAM")) {
+    return false;
+  }
+
+  return true;
+};
 
 /* EXTRA 10
  Scrivi una funzione che riceve una data come parametro, e calcola il numero di giorni passati da quella data.
