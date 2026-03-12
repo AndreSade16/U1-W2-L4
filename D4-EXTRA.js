@@ -56,6 +56,16 @@ const shoppingCart = [
   },
 ];
 
+const shoppingCartTotal = function (arr) {
+  let total = 0;
+  for (i = 0; i < shoppingCart.length; i++) {
+    const articleTotal = shoppingCart[i].price * shoppingCart[i].quantity;
+    total += articleTotal;
+  }
+
+  return total;
+};
+
 /* EXTRA 3
  Nel tuo eCommerce disponi di un'array di oggetti chiamato "shoppingCart". Ognuno di questi oggetti ha le seguenti proprietà: "price", "name", "id" e "quantity".
  Crea una funzione chiamata "addToShoppingCart" che riceve un nuovo oggetto dello stesso tipo, lo aggiunge a "shoppingCart" e ritorna il nuovo numero totale degli elementi.
@@ -63,12 +73,29 @@ const shoppingCart = [
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
+const addToShoppingCart = function (obj) {
+  if (obj.price && obj.name && obj.id && obj.quantity) {
+    shoppingCart.push(obj);
+  }
+  return shoppingCart.length;
+};
 /* EXTRA 4
  Nel tuo eCommerce disponi di un'array di oggetti chiamato "shoppingCart". Ognuno di questi oggetti ha le seguenti proprietà: "price", "name", "id" e "quantity".
  Crea una funzione chiamata "maxShoppingCart" che riceve l'array "shoppingCart" e ritorna l'oggetto più costoso in esso contenuto.
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+
+const maxShoppingCart = function () {
+  let tempMostValuable = {};
+  for (i = 1; i < shoppingCart.length; i++) {
+    if (shoppingCart[i].price >= shoppingCart[i - 1].price) {
+      tempMostValuable = shoppingCart[i];
+    } else tempMostValuable = shoppingCart[0];
+  }
+
+  return tempMostValuable;
+};
 
 /* EXTRA 5
  Nel tuo eCommerce disponi di un'array di oggetti chiamato "shoppingCart". Ognuno di questi oggetti ha le seguenti proprietà: "price", "name", "id" e "quantity".
@@ -77,6 +104,10 @@ const shoppingCart = [
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
+const latestShoppingCart = function () {
+  return shoppingCart[shoppingCart.length - 1];
+};
+
 /* EXTRA 6
  Crea una funzione chiamata "loopUntil" che riceve un numero intero come parametro con valore tra 0 e 9.
  La funzione è composta da un ciclo che stampa un numero casuale tra 0 e 9 finchè il numero casuale non è maggiore di x per tre volte di fila.
@@ -84,17 +115,61 @@ const shoppingCart = [
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
+const loopUntil = function (n) {
+  if (n < 0 || n > 9) {
+    return "Inserisci un numero tra 1 e 9";
+  } else {
+    const arr = [];
+    while (!(arr[0] > n && arr[1] > n && arr[2] > n)) {
+      const random = Math.floor(Math.random() * 10);
+      arr.unshift(random);
+    }
+
+    return arr;
+  }
+};
+
 /* EXTRA 7
 Crea una funzione chiamata "average" che riceve un array come parametro e ne ritorna la media aritmetica. La funzione salta automaticamente i valori non numerici nell'array.
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
+const randomArr = giveMeRandom(5);
+
+const average = function (arr) {
+  let sum = 0;
+  for (i = 0; i < arr.length; i++) {
+    if (typeof arr[i] === "number") {
+      sum += arr[i];
+    }
+  }
+
+  return sum / arr.length;
+};
+
 /* EXTRA 8
  Crea una funzione chiamata "longest" che trova la stringa più lunga all'interno di un array di stringhe fornito come parametro.
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+
+const longest = function (arr) {
+  let tempLongest = "";
+  for (i = 1; i < arr.length; i++) {
+    if (arr[i].length >= arr[i - 1].length) {
+      tempLongest = arr[i];
+    } else {
+      tempLongest = arr[0];
+    }
+  }
+
+  return tempLongest;
+};
+
+console.log(
+  longest(["ciao", "comecazzo", "stai", "supercalifragilistichespiralidoso"]),
+);
 
 /* EXTRA 9
  Crea una funzione per creare un filtro anti-spam per la tua casella email. La funzione riceve un parametro stringa chiamato "emailContent", e torna un valore booleano.
