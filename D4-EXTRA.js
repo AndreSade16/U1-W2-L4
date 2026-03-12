@@ -157,18 +157,16 @@ const average = function (arr) {
 const longest = function (arr) {
   let tempLongest = "";
   for (i = 1; i < arr.length; i++) {
+    tempLongest = arr[0];
     if (arr[i].length >= arr[i - 1].length) {
       tempLongest = arr[i];
-    } else {
-      tempLongest = arr[0];
-    }
-  }
+    } 
 
   return tempLongest;
 };
 
 console.log(
-  longest(["ciao", "comecazzo", "stai", "supercalifragilistichespiralidoso"]),
+  longest(["ciao", "comecazzo", "supercalifragilistichespiralidoso", "stai"]),
 );
 
 /* EXTRA 9
